@@ -12,7 +12,8 @@ public class PlayerScript : MonoBehaviour
     public GameObject bluePrefab;
     public GameObject redPrefab;
     public GameObject greenPrefab;
-    public GameObject yellowPrefab;
+    public GameObject yellowPrefab;    
+    public GameObject yellowWalkingPrefab;
     public GameObject ballPrefab;
     public GameDataScript gameData;
     static bool gameStarted = false;
@@ -137,7 +138,8 @@ public class PlayerScript : MonoBehaviour
         CreateBlocks(bluePrefab, xMax, yMax, level, 8);
         CreateBlocks(redPrefab, xMax, yMax, 1 + level, 10);
         CreateBlocks(greenPrefab, xMax, yMax, 1 + level, 12);
-        CreateBlocks(yellowPrefab, xMax, yMax, 2 + level, 15);
+        CreateBlocks(yellowPrefab, xMax, yMax, 1 + level, 15);
+        CreateBlocks(yellowWalkingPrefab, xMax, yMax, 1 + level, 15);
         CreateBalls();
     }
 

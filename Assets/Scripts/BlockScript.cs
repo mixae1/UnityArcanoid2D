@@ -9,7 +9,7 @@ public class BlockScript : MonoBehaviour
     public int hitsToDestroy;
     public int points;
     PlayerScript playerScript;
-    void Start()
+    protected void Start()
     {
         if (textObject != null)
         {
@@ -20,17 +20,20 @@ public class BlockScript : MonoBehaviour
                         .GetComponent<PlayerScript>();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
+        string temp = collision.collider.gameObject.tag;
+        
+        if (temp != "Ball")
+            return;
+        
+        hitsToDestroy--;
+        if (hitsToDestroy == 0)
         {
-            hitsToDestroy--;
-            if (hitsToDestroy == 0)
-            {
-                Destroy(gameObject);
-                playerScript.BlockDestroyed(points);
-            }
-            else if (textComponent != null)
-                textComponent.text = hitsToDestroy.ToString();
+            Destroy(gameObject);
+            playerScript.BlockDestroyed(points);
         }
+        else if (textComponent != null)
+            textComponent.text = hitsToDestroy.ToString();
     }
 }
