@@ -12,16 +12,22 @@ public class BallScript : MonoBehaviour
     public AudioClip hitSound;
     public AudioClip loseSound;
     public GameDataScript gameData;
+    private PauseManager pauseManager;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerObj = GameObject.FindGameObjectWithTag("Player");
         deltaX = transform.position.x;
         audioSrc = Camera.main.GetComponent<AudioSource>();
+        pauseManager = PauseManager.Instance();
     }
 
     void Update()
     {
+        if (pauseManager.paused)
+        {
+            return;
+        }
         if (rb.isKinematic)
             if (Input.GetButtonDown("Fire1"))
             {
