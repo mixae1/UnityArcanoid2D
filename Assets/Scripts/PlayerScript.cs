@@ -17,6 +17,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject ballPrefab;
     public GameDataScript gameData;
     static bool gameStarted = false;
+    private PauseManager pauseManager;
 
     static Collider2D[] colliders = new Collider2D[50];
     static ContactFilter2D contactFilter = new ContactFilter2D();
@@ -150,6 +151,10 @@ public class PlayerScript : MonoBehaviour
 
     void OnGUI()
     {
+        if (pauseManager.paused)
+        {
+            return;
+        }
         GUI.Label(new Rect(5, 4, Screen.width - 10, 100),
         string.Format(
             "<color=yellow><size=30>Level <b>{0}</b> Balls <b>{1}</b>" +
@@ -164,7 +169,7 @@ public class PlayerScript : MonoBehaviour
              " <color=white>J</color>-jump" +
              " <color=white>M</color>-music {1}" +
              " <color=white>S</color>-sound {2}" +
-             " <color=white>Esc</color>-exit</size></color>",
+             " <color=white>Esc</color>-menu</size></color>",
              OnOff(Time.timeScale > 0), OnOff(!gameData.music),
              OnOff(!gameData.sound)), style);
 
@@ -179,7 +184,7 @@ public class PlayerScript : MonoBehaviour
             if (gameData.resetOnStart)
                 gameData.Load();
         }
-
+        pauseManager = PauseManager.Instance();
         level = gameData.level;
         audioSrc = Camera.main.GetComponent<AudioSource>();
         SetMusic();
@@ -189,6 +194,10 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (pauseManager.paused)
+        {
+            return;
+        }
         if (Time.timeScale > 0)
         {
             var mousePos = Camera.main
@@ -207,11 +216,11 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
             gameData.sound = !gameData.sound;
         
-        if (Input.GetButtonDown("Pause"))
+        /*if (Input.GetButtonDown("Pause"))
             if (Time.timeScale > 0)
                 Time.timeScale = 0;
             else
-                Time.timeScale = 1;
+                Time.timeScale = 1;*/
 
         if (Input.GetKeyDown(KeyCode.N))
         {
@@ -219,18 +228,18 @@ public class PlayerScript : MonoBehaviour
             SceneManager.LoadScene("MainScene");
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        /*if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #endif
-        }
+        }*/
     }
 
-    void OnApplicationQuit()
+    /*void OnApplicationQuit()
     {
         gameData.Save();
-    }
+    }*/
 
 }
