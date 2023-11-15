@@ -15,7 +15,7 @@ public class UIManager
         }
         public string asString()
         {
-            return score.ToString() + " — " + name;
+            return score.ToString() + " - " + name;
         }
         public struct Comparer : IComparer<ScoreLine>
         {
@@ -47,7 +47,7 @@ public class UIManager
         bestScores.Add(new ScoreLine(1, "Idk"));
         bestScores.Sort(new ScoreLine.Comparer());
 
-        gameData = new GameDataScript();
+        gameData = (GameDataScript) ScriptableObject.CreateInstance("GameDataScript");
         gameData.LoadPlayerName();
         SetPlayerName(gameData.playerName);
 
