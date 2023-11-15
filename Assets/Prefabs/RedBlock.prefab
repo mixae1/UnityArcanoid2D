@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 2120559482975711241}
   - component: {fileID: 2120559482975711246}
   - component: {fileID: 2120559482975711247}
-  - component: {fileID: 1860005921371199089}
+  - component: {fileID: 5560983875687974045}
   m_Layer: 11
   m_Name: RedBlock
   m_TagString: Block
@@ -294,7 +294,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.17, y: 0.57}
   m_EdgeRadius: 0
---- !u!114 &1860005921371199089
+--- !u!114 &5560983875687974045
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,14 +303,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2120559482975711245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6918cf74174e9934ebfc454a861b8c59, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e662eef1f0eebf48add160b06a5ae25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   textObject: {fileID: 2120559482243744632}
   hitsToDestroy: 4
   points: 40
-  bonusPrefab: {fileID: 2190311312305694259, guid: 21a7932bc1667984d82438fb41850877, type: 3}
-  bonusScript: {fileID: 11500000, guid: e4473581b61e64c4794165dbc23d7153, type: 3}
-  backgroundColor: {r: 1, g: 0, b: 0, a: 1}
-  textColor: {r: 0, g: 0, b: 0, a: 1}
-  text: +200

@@ -13,9 +13,11 @@ public class BallScript : MonoBehaviour
     public AudioClip loseSound;
     public GameDataScript gameData;
     private PauseManager pauseManager;
+    private SpriteRenderer spriteRenderer;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         playerObj = GameObject.FindGameObjectWithTag("Player");
         deltaX = transform.position.x;
         audioSrc = Camera.main.GetComponent<AudioSource>();
@@ -69,6 +71,31 @@ public class BallScript : MonoBehaviour
 
         if (gameData.sound)
             audioSrc.PlayOneShot(hitSound, 5);
+    }
+
+    public void BonusUpdate(int effect)
+    {
+        switch(effect)
+        {
+            case 1:
+            {
+                spriteRenderer.color = Color.red;
+                tag = "FireBall";
+                break;
+            }
+            case 2:
+            {
+                spriteRenderer.color = Color.grey;
+                tag = "SteelBall";
+                break;
+            }
+            case 3:
+            {
+                spriteRenderer.color = Color.white;
+                tag = "Ball";
+                break;
+            }
+        }
     }
 
 }

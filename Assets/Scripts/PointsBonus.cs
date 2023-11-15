@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PointsBonus : BonusBase
 {
-    public override void BonusActivate()
+   /*public override void BonusActivate()
     {
         player.gameData.points += 200;
-    }
+    }*/
 }

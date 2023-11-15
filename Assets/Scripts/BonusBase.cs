@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BonusBase : MonoBehaviour
 {
+    public int bonusId;
     public string text = "+100";
     public Color backgroundColor = Color.yellow;
     public Color textColor = Color.black;
     public Text textComponent;
     public PlayerScript player;
-
     private SpriteRenderer spriteRenderer;
+    public BallScript[] ballScripts;
 
-    private void Start() {
+    protected void Start() {
         textComponent = GetComponentInChildren<Text>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        ballScripts = FindObjectsOfType<BallScript>();
         UpdateSpriteAndText();
     }
 
@@ -36,11 +40,11 @@ public class BonusBase : MonoBehaviour
 
         switch (tag) {
             case "Player": {
-                BonusActivate();
+                BonusActivate(bonusId);
                 Destroy(gameObject);
                 break;
             }
-            case "Wall": {
+            case "LoseCollider": {
                 Debug.Log("Bottom wall");
                 Destroy(gameObject);
                 break;
@@ -48,7 +52,18 @@ public class BonusBase : MonoBehaviour
         } 
     }
 
-    public virtual void BonusActivate() {
-        player.gameData.points += 100;
+    public virtual void BonusActivate(int bonus) {
+
+        if(bonus == 0)
+        {
+            player.gameData.points += 100;
+        }
+        else
+        {
+            foreach (var bs in ballScripts)
+            {
+                bs.BonusUpdate(bonus);
+            }
+        }
     }
 }
