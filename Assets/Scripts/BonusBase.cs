@@ -14,7 +14,13 @@ public class BonusBase : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private void Start() {
+        textComponent = GetComponentInChildren<Text>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        UpdateSpriteAndText();
+    }
+
+    public void UpdateSpriteAndText() {
+        Debug.Log("Update sprite and text");
         if (spriteRenderer is not null) {
             spriteRenderer.color = backgroundColor;
         }
