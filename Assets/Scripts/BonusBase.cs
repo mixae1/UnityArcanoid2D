@@ -9,6 +9,7 @@ public class BonusBase : MonoBehaviour
     public Color backgroundColor = Color.yellow;
     public Color textColor = Color.black;
     public Text textComponent;
+    public PlayerScript player;
 
     private SpriteRenderer spriteRenderer;
 
@@ -42,6 +43,6 @@ public class BonusBase : MonoBehaviour
     }
 
     public virtual void BonusActivate() {
-        Debug.Log("Player picked up bonus!");
+        player.gameData.points += 100;
     }
 }
