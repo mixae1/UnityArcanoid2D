@@ -54,6 +54,8 @@ public class BallScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.tag == "Bonus") return;
+
         if (gameData.sound)
             audioSrc.PlayOneShot(loseSound, 5);
         Destroy(gameObject);
@@ -63,6 +65,8 @@ public class BallScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.collider.tag == "Bonus") return;
+
         if (gameData.sound)
             audioSrc.PlayOneShot(hitSound, 5);
     }
