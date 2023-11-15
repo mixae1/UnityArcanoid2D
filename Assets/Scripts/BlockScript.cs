@@ -8,7 +8,7 @@ public class BlockScript : MonoBehaviour
     Text textComponent;
     public int hitsToDestroy;
     public int points;
-    PlayerScript playerScript;
+    protected PlayerScript playerScript;
     protected void Start()
     {
         if (textObject != null)
@@ -26,14 +26,20 @@ public class BlockScript : MonoBehaviour
         
         if (temp != "Ball")
             return;
+
         
-        hitsToDestroy--;
-        if (hitsToDestroy == 0)
+        hitsToDestroy-= collision.gameObject.GetComponent<BallScript>().damage;
+        
+        if (hitsToDestroy <= 0)
         {
-            Destroy(gameObject);
-            playerScript.BlockDestroyed(points);
+            OnBlockDestroy();
         }
         else if (textComponent != null)
             textComponent.text = hitsToDestroy.ToString();
+    }
+    
+    protected virtual void OnBlockDestroy() {
+        Destroy(gameObject);
+        playerScript.BlockDestroyed(points);
     }
 }

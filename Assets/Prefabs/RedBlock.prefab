@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 2120559482975711241}
   - component: {fileID: 2120559482975711246}
   - component: {fileID: 2120559482975711247}
-  - component: {fileID: 2120559482975711244}
+  - component: {fileID: 5560983875687974045}
   m_Layer: 11
   m_Name: RedBlock
   m_TagString: Block
@@ -294,7 +294,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.17, y: 0.57}
   m_EdgeRadius: 0
---- !u!114 &2120559482975711244
+--- !u!114 &5560983875687974045
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

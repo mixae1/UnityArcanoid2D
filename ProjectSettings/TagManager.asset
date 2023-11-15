@@ -7,6 +7,8 @@ TagManager:
   - Wall
   - Ball
   - Block
+  - Bonus
+  - LoseCollider
   layers:
   - Default
   - TransparentFX
