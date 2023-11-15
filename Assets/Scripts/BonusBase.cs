@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class BonusBase : MonoBehaviour
 {
-    public int bonusId;
     public string text = "+100";
     public Color backgroundColor = Color.yellow;
     public Color textColor = Color.black;
@@ -40,7 +39,7 @@ public class BonusBase : MonoBehaviour
 
         switch (tag) {
             case "Player": {
-                BonusActivate(bonusId);
+                BonusActivate();
                 Destroy(gameObject);
                 break;
             }
@@ -52,18 +51,8 @@ public class BonusBase : MonoBehaviour
         } 
     }
 
-    public virtual void BonusActivate(int bonus) {
-
-        if(bonus == 0)
-        {
-            player.gameData.points += 100;
-        }
-        else
-        {
-            foreach (var bs in ballScripts)
-            {
-                bs.BonusUpdate(bonus);
-            }
-        }
+    public virtual void BonusActivate() {
+        
+        player.gameData.points += 100;
     }
 }

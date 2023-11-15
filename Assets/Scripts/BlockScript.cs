@@ -24,25 +24,11 @@ public class BlockScript : MonoBehaviour
     {
         string temp = collision.collider.gameObject.tag;
         
-        //if (temp != "Ball")
-            //return;
-        if (temp == "SteelBall")
-        {
-            hitsToDestroy-=40;
-        }
-        else if (temp == "FireBall")
-        {
-            hitsToDestroy-=4;
-        }
-        else if (temp == "Ball")
-        {
-            hitsToDestroy--;
-        }
-        else
-        {
+        if (temp != "Ball")
             return;
-        }
+
         
+        hitsToDestroy-= collision.gameObject.GetComponent<BallScript>().damage;
         
         if (hitsToDestroy <= 0)
         {

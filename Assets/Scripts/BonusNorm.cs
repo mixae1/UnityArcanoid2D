@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BonusFire : BonusBase
+public class BonusNorm : BonusBase
 {
     public BallScript[] ballScripts;
 
@@ -15,8 +15,8 @@ public class BonusFire : BonusBase
     public override void BonusActivate() {
         foreach (var bs in ballScripts)
         {
-            bs.spriteRenderer.color = Color.red;
-            bs.damage = 4;
+            bs.damage = 1;
+            bs.spriteRenderer.color = Color.white;
         }
     }
 }

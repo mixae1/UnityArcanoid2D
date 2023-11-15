@@ -8,8 +8,6 @@ public class BlockWithBonus : BlockScript
     [SerializeField]
     private GameObject bonusPrefab;
     [SerializeField]
-    private MonoScript bonusScript;
-    [SerializeField]
     private Color backgroundColor;
     [SerializeField]
     private Color textColor;
@@ -29,32 +27,33 @@ public class BlockWithBonus : BlockScript
         GameObject bonusObject = Instantiate(bonusPrefab, position, rotation);
         Debug.Log(bonusObject.name);
         var bonus = Random.Range(0, 3);
-        BonusBase bonusScriptObject = (BonusBase) bonusObject.AddComponent(bonusScript.GetClass());
         if (bonus == 0)
         {
+            BonusBase bonusScriptObject = bonusObject.AddComponent<BonusBase>();
             bonusScriptObject.backgroundColor = backgroundColor;
             bonusScriptObject.text = text;
+            bonusScriptObject.player = playerScript;
+            bonusScriptObject.textColor = textColor;
         }
         else if (bonus == 1)
         {
+            BonusFire bonusScriptObject = bonusObject.AddComponent<BonusFire>();
             bonusScriptObject.backgroundColor = Color.red;
             bonusScriptObject.text = "Fire";
         }
         else if (bonus == 2)
         {
+            BonusSteel bonusScriptObject = bonusObject.AddComponent<BonusSteel>();
             bonusScriptObject.backgroundColor = Color.grey;
             bonusScriptObject.text = "Steel";
         }
         else if (bonus == 3)
         {
+            BonusNorm bonusScriptObject = bonusObject.AddComponent<BonusNorm>();
             bonusScriptObject.backgroundColor = Color.white;
             bonusScriptObject.text = "Norm";
         }
 
-        bonusScriptObject.bonusId = bonus;
-        bonusScriptObject.player = playerScript;
-        bonusScriptObject.textColor = textColor;
-        
         base.OnBlockDestroy();
     }
 }
