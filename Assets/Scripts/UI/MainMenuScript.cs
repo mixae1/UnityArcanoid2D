@@ -15,6 +15,7 @@ public class MainMenuScript : MonoBehaviour
     private UIManager uiManager;
     public void Start()
     {
+        Cursor.visible = true;
         uiManager = UIManager.Instance();
         UpdateScoreLines();
 
@@ -28,7 +29,7 @@ public class MainMenuScript : MonoBehaviour
     {
         for(var i = 0; i < uiManager.bestScores.Count; i++)
         {
-            bestScoreTexts[i].text = (i+1).ToString() + ") " + uiManager.bestScores[i].asString();
+            bestScoreTexts[i].text = (i+1).ToString() + ". " + uiManager.bestScores[i].asString();
         }
     }
     public void StartGame()

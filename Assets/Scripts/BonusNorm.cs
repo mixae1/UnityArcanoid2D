@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class BonusNorm : BonusBase
 {
-    public BallScript[] ballScripts;
-
-    public int bonusId;
     protected new void Start()
     {
         base.Start();
@@ -15,6 +12,9 @@ public class BonusNorm : BonusBase
     public override void BonusActivate() {
         foreach (var bs in ballScripts)
         {
+            if (bs == null) {
+                continue;
+            }
             bs.damage = 1;
             bs.spriteRenderer.color = Color.white;
         }

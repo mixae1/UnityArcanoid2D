@@ -23,7 +23,6 @@ public class BonusBase : MonoBehaviour
     }
 
     public void UpdateSpriteAndText() {
-        Debug.Log("Update sprite and text");
         if (spriteRenderer is not null) {
             spriteRenderer.color = backgroundColor;
         }
