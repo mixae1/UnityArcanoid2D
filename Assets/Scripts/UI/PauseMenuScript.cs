@@ -31,12 +31,14 @@ public class PauseMenuScript : MonoBehaviour
     }
     public void Resume()
     {
+        Cursor.visible = false;
         pauseMenu.SetActive(false);
         pauseManager.paused = false;
         Time.timeScale = 1f;
     }
     void Pause()
     {
+        Cursor.visible = true;
         pauseMenu.SetActive(true);
         pauseManager.paused = true;
         Time.timeScale = 0f;

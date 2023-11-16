@@ -15,6 +15,7 @@ public class MainMenuScript : MonoBehaviour
     private UIManager uiManager;
     public void Start()
     {
+        Cursor.visible = true;
         uiManager = UIManager.Instance();
         UpdateScoreLines();
 
