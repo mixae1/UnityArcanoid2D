@@ -21,12 +21,10 @@ public class BlockWithBonus : BlockScript
 
     protected override void OnBlockDestroy()
     {
-        Debug.Log("OnBlockDestroyed!");
         Vector3 position = transform.position;
         Quaternion rotation = transform.rotation;
         GameObject bonusObject = Instantiate(bonusPrefab, position, rotation);
-        Debug.Log(bonusObject.name);
-        var bonus = Random.Range(0, 3);
+        var bonus = Random.Range(0, 4);
         if (bonus == 0)
         {
             BonusBase bonusScriptObject = bonusObject.AddComponent<BonusBase>();
